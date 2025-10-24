@@ -5,6 +5,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
+import SavingsIcon from "@mui/icons-material/Savings";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
@@ -21,7 +22,7 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
-const MovieDetails = ({ movie }) => {  // Don't miss this!
+const MovieDetails = ({ movie }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -50,6 +51,10 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
 
       <Paper component="ul" sx={{ ...root }}>
         <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+        <Chip
+          icon={<SavingsIcon />}
+          label={movie.budget > 0 ? `${(movie.budget / 1_000_000).toFixed(1)}M` : 'N/A'}
+        />
         <Chip
           icon={<MonetizationIcon />}
           label={`${movie.revenue.toLocaleString()}`}
